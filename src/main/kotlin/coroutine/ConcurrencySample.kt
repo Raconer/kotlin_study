@@ -29,7 +29,7 @@ fun main() = runBlocking {
     val dispatcher = Executors.newFixedThreadPool(treadCnt).asCoroutineDispatcher()
     val time = measureTimeMillis {
         val jobs = List(taskCnt) { i ->
-            launch(Dispatchers.Default) {
+            launch(Dispatchers.Unconfined) {
                 println("\uD83D\uDE80  [${Thread.currentThread().name}] Start task [$i]")
                 loadData(i)
                 println("✅ [${Thread.currentThread().name}] End task [$i]")
